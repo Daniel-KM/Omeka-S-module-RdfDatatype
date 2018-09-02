@@ -1,91 +1,13 @@
-$(document).ready( function() {
+(function($) {
 
-    $(function() {
-        var defaultSelectors = $('#properties .resource-values div.default-selector');
-        if (rdfDatatypes.indexOf('rdf:HTML') != -1) {
-            $('<a>', {'class': 'add-value button o-icon-rdf-html', 'href': '#', 'data-type': 'rdf:HTML'})
-                .text(Omeka.jsTranslate('Html'))
-                .appendTo(defaultSelectors);
-            defaultSelectors.append("\n");
-        }
-        if (rdfDatatypes.indexOf('rdf:XMLLiteral') != -1) {
-            $('<a>', {'class': 'add-value button o-icon-rdf-xml-literal', 'href': '#', 'data-type': 'rdf:XMLLiteral'})
-                .text(Omeka.jsTranslate('Xml'))
-                .appendTo(defaultSelectors);
-            defaultSelectors.append("\n");
-        }
-        if (rdfDatatypes.indexOf('xsd:boolean') != -1) {
-            $('<a>', {'class': 'add-value button o-icon-xsd-boolean', 'href': '#', 'data-type': 'xsd:boolean'})
-                .text(Omeka.jsTranslate('True/False'))
-                .appendTo(defaultSelectors);
-            defaultSelectors.append("\n");
-        }
-        if (rdfDatatypes.indexOf('xsd:integer') != -1) {
-            $('<a>', {'class': 'add-value button o-icon-xsd-integer', 'href': '#', 'data-type': 'xsd:integer'})
-                .text(Omeka.jsTranslate('Number'))
-                .appendTo(defaultSelectors);
-            defaultSelectors.append("\n");
-        }
-        if (rdfDatatypes.indexOf('xsd:decimal') != -1) {
-            $('<a>', {'class': 'add-value button o-icon-xsd-decimal', 'href': '#', 'data-type': 'xsd:decimal'})
-                .text(Omeka.jsTranslate('Decimal'))
-                .appendTo(defaultSelectors);
-            defaultSelectors.append("\n");
-        }
-        if (rdfDatatypes.indexOf('xsd:date') != -1) {
-            $('<a>', {'class': 'add-value button o-icon-xsd-date', 'href': '#', 'data-type': 'xsd:date'})
-                .text(Omeka.jsTranslate('Date'))
-                .appendTo(defaultSelectors);
-            defaultSelectors.append("\n");
-        }
-        if (rdfDatatypes.indexOf('xsd:time') != -1) {
-            $('<a>', {'class': 'add-value button o-icon-xsd-time', 'href': '#', 'data-type': 'xsd:time'})
-                .text(Omeka.jsTranslate('Time'))
-                .appendTo(defaultSelectors);
-            defaultSelectors.append("\n");
-        }
-        if (rdfDatatypes.indexOf('xsd:dateTime') != -1) {
-            $('<a>', {'class': 'add-value button o-icon-xsd-date-time', 'href': '#', 'data-type': 'xsd:dateTime'})
-                .text(Omeka.jsTranslate('Date Time'))
-                .appendTo(defaultSelectors);
-            defaultSelectors.append("\n");
-        }
-        if (rdfDatatypes.indexOf('xsd:gYear') != -1) {
-            $('<a>', {'class': 'add-value button o-icon-xsd-g-year', 'href': '#', 'data-type': 'xsd:gYear'})
-                .text(Omeka.jsTranslate('Year'))
-                .appendTo(defaultSelectors);
-            defaultSelectors.append("\n");
-        }
-        if (rdfDatatypes.indexOf('xsd:gYearMonth') != -1) {
-            $('<a>', {'class': 'add-value button o-icon-xsd-g-year-month', 'href': '#', 'data-type': 'xsd:gYearMonth'})
-                .text(Omeka.jsTranslate('Year Month'))
-                .appendTo(defaultSelectors);
-            defaultSelectors.append("\n");
-        }
-        if (rdfDatatypes.indexOf('xsd:gMonth') != -1) {
-            $('<a>', {'class': 'add-value button o-icon-xsd-g-month', 'href': '#', 'data-type': 'xsd:gMonth'})
-                .text(Omeka.jsTranslate('Month'))
-                .appendTo(defaultSelectors);
-            defaultSelectors.append("\n");
-        }
-        if (rdfDatatypes.indexOf('xsd:gMonthDay') != -1) {
-            $('<a>', {'class': 'add-value button o-icon-xsd-g-month-day', 'href': '#', 'data-type': 'xsd:gMonthDay'})
-                .text(Omeka.jsTranslate('Month Day'))
-                .appendTo(defaultSelectors);
-            defaultSelectors.append("\n");
-        }
-        if (rdfDatatypes.indexOf('xsd:gDay') != -1) {
-            $('<a>', {'class': 'add-value button o-icon-xsd-g-day', 'href': '#', 'data-type': 'xsd:gDay'})
-                .text(Omeka.jsTranslate('Day'))
-                .appendTo(defaultSelectors);
-            defaultSelectors.append("\n");
-        }
-    });
-
-    $(document).on('o:prepare-value', function(e, type, value) {
+    /**
+     * Prepare the markup for the default data types.
+     */
+    $(document).on('o:prepare-value', function(e, type, value, valueObj, namePrefix) {
+        // Prepare markup for some specific resource data types.
         if (type === 'rdf:HTML') {
             var thisValue = $(value);
-            // Append the ckeditor dynamically.
+            // Append the ckeditor.
             thisValue.find('.wyziwyg').each(function () {
                 var editor = CKEDITOR.inline(this, {
                     on: {change: function() {
@@ -101,50 +23,144 @@ $(document).ready( function() {
 
             // Set existing values during initial load.
             var val = valueInput.val();
-            if (val === '1' || val === 'true') {
-                userInput.prop('checked', true);
-                userInput.val('1');
-                valueInput.val('1');
-            } else {
-                userInput.prop('checked', false);
-                userInput.val('0');
-                valueInput.val('0');
-            }
+            val = (val === '1' || val === 'true') ? '1' : '0';
+            userInput.prop('checked', val === '1');
+            userInput.val(val);
+            valueInput.val(val);
 
             // Synchronize the user input with the true but hidden value.
             userInput.on('change', function(e) {
-                if ($(this).is(':checked')) {
-                    userInput.val('1');
-                    valueInput.val('1');
-                } else {
-                    userInput.val('0');
-                    valueInput.val('0');
-                }
+                var val = $(this).is(':checked') ? '1' : '0';
+                userInput.val(val);
+                valueInput.val(val);
             });
         }
     });
 
-    $('input.value.xsd-decimal').on('keyup', function(e) {
-        regexCheck(this, 'xsd:decimal');
+    $(document).ready( function() {
+
+        $('input.value.xsd-decimal').on('keyup', function(e) {
+            regexCheck(this, 'xsd:decimal');
+        });
+        $('input.value.xsd-date-time').on('keyup', function(e) {
+            regexCheck(this, 'xsd:dateTime');
+        });
+        $('input.value.xsd-g-year').on('keyup', function(e) {
+            regexCheck(this, 'xsd:gYear');
+        });
+        $('input.value.xsd-g-year-month').on('keyup', function(e) {
+            regexCheck(this, 'xsd:gYearMonth');
+        });
+        $('input.value.xsd-g-month-day').on('keyup', function(e) {
+            regexCheck(this, 'xsd:gMonthDay');
+        });
+        $('input.value.xsd-g-month').on('keyup', function(e) {
+            regexCheck(this, 'xsd:gMonth');
+        });
+        $('input.value.xsd-g-day').on('keyup', function(e) {
+            regexCheck(this, 'xsd:gDay');
+        });
+
+        // Initial load.
+        initRdfDatatypes();
+
     });
-    $('input.value.xsd-date-time').on('keyup', function(e) {
-        regexCheck(this, 'xsd:dateTime');
-    });
-    $('input.value.xsd-g-year').on('keyup', function(e) {
-        regexCheck(this, 'xsd:gYear');
-    });
-    $('input.value.xsd-g-year-month').on('keyup', function(e) {
-        regexCheck(this, 'xsd:gYearMonth');
-    });
-    $('input.value.xsd-g-month-day').on('keyup', function(e) {
-        regexCheck(this, 'xsd:gMonthDay');
-    });
-    $('input.value.xsd-g-month').on('keyup', function(e) {
-        regexCheck(this, 'xsd:gMonth');
-    });
-    $('input.value.xsd-g-day').on('keyup', function(e) {
-        regexCheck(this, 'xsd:gDay');
-    });
+
+    /**
+     * Prepare the rdf datatypes for the main resource template.
+     *
+     * There is no event in resource-form.js and common/resource-form-templates.phtml,
+     * except the generic view.add.after and view.edit.after, so the default
+     * form is completed dynamically during the initial load.
+     */
+    var initRdfDatatypes = function() {
+        var defaultSelectorAndFields = $('.resource-values.field.template .add-values.default-selector, #properties .resource-values div.default-selector');
+        appendRdfDatatypes(defaultSelectorAndFields);
+    }
+
+    /**
+     * Append the configured rdf datatypes to a list of element.
+     */
+    var appendRdfDatatypes = function(selector) {
+        if (rdfDatatypes.indexOf('rdf:HTML') !== -1) {
+            $('<a>', {'class': 'add-value button o-icon-rdf-html', 'href': '#', 'data-type': 'rdf:HTML'})
+                .text(Omeka.jsTranslate('Html'))
+                .appendTo(selector);
+            selector.append("\n");
+        }
+        if (rdfDatatypes.indexOf('rdf:XMLLiteral') !== -1) {
+            $('<a>', {'class': 'add-value button o-icon-rdf-xml-literal', 'href': '#', 'data-type': 'rdf:XMLLiteral'})
+                .text(Omeka.jsTranslate('Xml'))
+                .appendTo(selector);
+            selector.append("\n");
+        }
+        if (rdfDatatypes.indexOf('xsd:boolean') !== -1) {
+            $('<a>', {'class': 'add-value button o-icon-xsd-boolean', 'href': '#', 'data-type': 'xsd:boolean'})
+                .text(Omeka.jsTranslate('True/False'))
+                .appendTo(selector);
+            selector.append("\n");
+        }
+        if (rdfDatatypes.indexOf('xsd:integer') !== -1) {
+            $('<a>', {'class': 'add-value button o-icon-xsd-integer', 'href': '#', 'data-type': 'xsd:integer'})
+                .text(Omeka.jsTranslate('Number'))
+                .appendTo(selector);
+            selector.append("\n");
+        }
+        if (rdfDatatypes.indexOf('xsd:decimal') !== -1) {
+            $('<a>', {'class': 'add-value button o-icon-xsd-decimal', 'href': '#', 'data-type': 'xsd:decimal'})
+                .text(Omeka.jsTranslate('Decimal'))
+                .appendTo(selector);
+            selector.append("\n");
+        }
+        if (rdfDatatypes.indexOf('xsd:dateTime') !== -1) {
+            $('<a>', {'class': 'add-value button o-icon-xsd-date-time', 'href': '#', 'data-type': 'xsd:dateTime'})
+                .text(Omeka.jsTranslate('Date Time'))
+                .appendTo(selector);
+            selector.append("\n");
+        }
+        if (rdfDatatypes.indexOf('xsd:date') !== -1) {
+            $('<a>', {'class': 'add-value button o-icon-xsd-date', 'href': '#', 'data-type': 'xsd:date'})
+                .text(Omeka.jsTranslate('Date'))
+                .appendTo(selector);
+            selector.append("\n");
+        }
+        if (rdfDatatypes.indexOf('xsd:time') !== -1) {
+            $('<a>', {'class': 'add-value button o-icon-xsd-time', 'href': '#', 'data-type': 'xsd:time'})
+                .text(Omeka.jsTranslate('Time'))
+                .appendTo(selector);
+            selector.append("\n");
+        }
+        if (rdfDatatypes.indexOf('xsd:gYear') !== -1) {
+            $('<a>', {'class': 'add-value button o-icon-xsd-g-year', 'href': '#', 'data-type': 'xsd:gYear'})
+                .text(Omeka.jsTranslate('Year'))
+                .appendTo(selector);
+            selector.append("\n");
+        }
+        if (rdfDatatypes.indexOf('xsd:gYearMonth') !== -1) {
+            $('<a>', {'class': 'add-value button o-icon-xsd-g-year-month', 'href': '#', 'data-type': 'xsd:gYearMonth'})
+                .text(Omeka.jsTranslate('Year Month'))
+                .appendTo(selector);
+            selector.append("\n");
+        }
+        if (rdfDatatypes.indexOf('xsd:gMonth') !== -1) {
+            $('<a>', {'class': 'add-value button o-icon-xsd-g-month', 'href': '#', 'data-type': 'xsd:gMonth'})
+                .text(Omeka.jsTranslate('Month'))
+                .appendTo(selector);
+            selector.append("\n");
+        }
+        if (rdfDatatypes.indexOf('xsd:gMonthDay') !== -1) {
+            $('<a>', {'class': 'add-value button o-icon-xsd-g-month-day', 'href': '#', 'data-type': 'xsd:gMonthDay'})
+                .text(Omeka.jsTranslate('Month Day'))
+                .appendTo(selector);
+            selector.append("\n");
+        }
+        if (rdfDatatypes.indexOf('xsd:gDay') !== -1) {
+            $('<a>', {'class': 'add-value button o-icon-xsd-g-day', 'href': '#', 'data-type': 'xsd:gDay'})
+                .text(Omeka.jsTranslate('Day'))
+                .appendTo(selector);
+            selector.append("\n");
+        }
+    };
 
     /**
      * Check user input against official regexes provided by the w3c.
@@ -152,8 +168,7 @@ $(document).ready( function() {
      * @param object element
      * @param string datatype
      */
-    function regexCheck(element, datatype)
-    {
+    var regexCheck = function(element, datatype) {
         var regex, message;
         var val = element.value.trim();
         if (datatype === 'xsd:decimal') {
@@ -193,4 +208,4 @@ $(document).ready( function() {
         }
     }
 
-});
+})(jQuery);
