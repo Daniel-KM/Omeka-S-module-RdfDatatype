@@ -10,6 +10,10 @@ $(document).ready( function() {
             .text(Omeka.jsTranslate('Number'))
             .appendTo(defaultSelectors);
         defaultSelectors.append("\n");
+        $('<a>', {'class': 'add-value button o-icon-xsd-decimal', 'href': '#', 'data-type': 'xsd:decimal',})
+            .text(Omeka.jsTranslate('Decimal'))
+            .appendTo(defaultSelectors);
+        defaultSelectors.append("\n");
     });
 
     $(document).on('o:prepare-value', function(e, type, value) {
@@ -40,6 +44,19 @@ $(document).ready( function() {
                     valueInput.val('0');
                 }
             });
+        }
+    });
+
+    $('input.value.xsd-decimal').on('keyup', function(e) {
+        // Use a quick js check (for any number) and the official regex provided by the w3c.
+        // @url https://www.w3.org/TR/xmlschema11-2/#decimal
+        var val = this.value.trim();
+        if (val === ''
+            || ($.isNumeric(val) && val.match(/^(\+|-)?([0-9]+(\.[0-9]*)?|\.[0-9]+)$/))
+        ) {
+            this.setCustomValidity('');
+        } else {
+            this.setCustomValidity(Omeka.jsTranslate('Please enter a valid decimal number.'));
         }
     });
 

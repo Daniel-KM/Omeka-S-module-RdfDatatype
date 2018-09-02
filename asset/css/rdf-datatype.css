@@ -1,8 +1,12 @@
+input.xsd-decimal,
 input.xsd-integer {
     width: 100%;
 }
 .o-icon-xsd-boolean:before {
     content: "\f00c";
+}
+.o-icon-xsd-decimal:before {
+    content: "\f3d1";
 }
 .o-icon-xsd-integer:before {
     content: "\f292";
