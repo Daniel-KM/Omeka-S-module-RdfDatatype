@@ -8,6 +8,9 @@ input.xsd-integer {
 .o-icon-xsd-date:before {
     content: "\f073";
 }
+.o-icon-xsd-date-time:before {
+    content: "\f073";
+}
 .o-icon-xsd-decimal:before {
     content: "\f3d1";
 }

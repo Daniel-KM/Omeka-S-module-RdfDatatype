@@ -29,6 +29,7 @@ TODO
 ----
 
 - Use a javascript for html and xml (ckeditor?).
+- Use a javascript for xsd:dateTime.
 - Add a batch process to change the type of a property for a list of resources.
 - Add xsd:token or a derivative for standard or custom enumerations (language, etc.).
 - Add xsd:anyURI for uris.
