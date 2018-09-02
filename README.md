@@ -24,6 +24,10 @@ The data types are automatically available in all the resource forms.
 Nevertheless, it is recommended to create resources templates in order to
 simplify their use and to normalize the records.
 
+Note: the datatypes `xsd:gMonth`, `xsd:gMonthDay` and `xsd:gDay` may not be
+intuitive. To be compliant with the standard, they should be prepended with `--`
+for months, and `---` for day. They are not added automatically.
+
 
 TODO
 ----

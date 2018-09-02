@@ -1,3 +1,4 @@
+input.xsd-g-year,
 input.xsd-decimal,
 input.xsd-integer {
     width: 100%;
@@ -5,6 +6,11 @@ input.xsd-integer {
 .o-icon-xsd-boolean:before {
     content: "\f00c";
 }
+.o-icon-xsd-g-day:before,
+.o-icon-xsd-g-month:before,
+.o-icon-xsd-g-month-day:before,
+.o-icon-xsd-g-year:before,
+.o-icon-xsd-g-year-month:before,
 .o-icon-xsd-date:before {
     content: "\f073";
 }
