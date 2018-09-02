@@ -1,14 +1,14 @@
-# Translation template for module RdfDatatype.
-# Copyright (C) 2017 Daniel Berthereau
-# This file is distributed under the same license as the RdfDatatype package.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: RdfDatatype\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-01 00:00+0100\n"
+"POT-Creation-Date: 2018-09-03 00:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,3 +16,192 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: Module.php:115
+msgid ""
+"Avoid overloading the user interface and use the resource templates as much "
+"as possible."
+msgstr ""
+
+#: Module.php:118
+msgid ""
+"Note: the datatypes Gregorian Month, Month day and Day require a specific "
+"format (two or three dashes prepended) to be fully compliant with the "
+"standard."
+msgstr ""
+
+#: src/DataType/XsdBoolean.php:60
+msgid "true"
+msgstr ""
+
+#: src/DataType/XsdBoolean.php:61
+msgid "false"
+msgstr ""
+
+#: src/Form/ConfigForm.php:15
+msgid "RDF datatypes to display"
+msgstr ""
+
+#: src/Form/ConfigForm.php:16
+msgid ""
+"The selected datatypes will be automatically available in resource forms. "
+"All the datatypes are available via the resource templates."
+msgstr ""
+
+#: src/Form/ConfigForm.php:18
+msgid "Html"
+msgstr ""
+
+#: src/Form/ConfigForm.php:19
+msgid "Xml"
+msgstr ""
+
+#: src/Form/ConfigForm.php:20 src/DataType/XsdBoolean.php:22
+msgid "Boolean"
+msgstr ""
+
+#: src/Form/ConfigForm.php:21 src/DataType/XsdInteger.php:19
+msgid "Integer"
+msgstr ""
+
+#: src/Form/ConfigForm.php:22 src/DataType/XsdDecimal.php:19
+#: config/module.config.php:43
+msgid "Decimal"
+msgstr ""
+
+#: src/Form/ConfigForm.php:23
+msgid "Date time"
+msgstr ""
+
+#: src/Form/ConfigForm.php:25 src/DataType/XsdTime.php:21
+#: config/module.config.php:54
+msgid "Time"
+msgstr ""
+
+#: src/Form/ConfigForm.php:26 src/DataType/XsdGDay.php:21
+msgid "Gregorian day"
+msgstr ""
+
+#: src/Form/ConfigForm.php:27 src/DataType/XsdGMonth.php:21
+msgid "Gregorian month"
+msgstr ""
+
+#: src/Form/ConfigForm.php:28
+msgid "Gregorian month and day"
+msgstr ""
+
+#: src/Form/ConfigForm.php:29 src/DataType/XsdGYear.php:21
+msgid "Gregorian year"
+msgstr ""
+
+#: src/Form/ConfigForm.php:30
+msgid "Gregorian year and month"
+msgstr ""
+
+#: src/DataType/XsdGMonthDay.php:21
+msgid "Gregorian month day"
+msgstr ""
+
+#: src/DataType/XsdGMonthDay.php:30
+msgid "Input a month and a day normalized as rdf: --12-25"
+msgstr ""
+
+#: src/DataType/AbstractRdfDatatype.php:14
+msgid "RDF Datatype"
+msgstr ""
+
+#: src/DataType/XsdGYearMonth.php:21
+msgid "Gregorian year month"
+msgstr ""
+
+#: src/DataType/XsdGYearMonth.php:30
+msgid "Input a year and a month: 2018-09"
+msgstr ""
+
+#: src/DataType/XsdGDay.php:30
+msgid "Input a day normalized as rdf: ---07"
+msgstr ""
+
+#: src/DataType/XsdDecimal.php:28
+msgid "Input a decimal number…"
+msgstr ""
+
+#: src/DataType/XsdDateTime.php:21 config/module.config.php:41
+msgid "Date Time"
+msgstr ""
+
+#: src/DataType/XsdGMonth.php:30
+msgid "Input a month normalized as rdf: --09"
+msgstr ""
+
+#: src/DataType/XsdInteger.php:28
+msgid "Input an integer…"
+msgstr ""
+
+#: src/DataType/RdfHtml.php:44
+msgid "<p>input <em>your</em> <strong>html</strong> content</p>"
+msgstr ""
+
+#: src/DataType/XsdGYear.php:30
+msgid "Input a year with four digits: -0753"
+msgstr ""
+
+#: config/module.config.php:42
+msgid "Day"
+msgstr ""
+
+#: config/module.config.php:44
+msgid "Month"
+msgstr ""
+
+#: config/module.config.php:45
+msgid "Month Day"
+msgstr ""
+
+#: config/module.config.php:46
+msgid "Number"
+msgstr ""
+
+#: config/module.config.php:47
+msgid "Please enter a valid decimal number."
+msgstr ""
+
+#: config/module.config.php:48
+msgid ""
+"Please enter a valid ISO 8601 full date time, with or without time zone "
+"offset."
+msgstr ""
+
+#: config/module.config.php:49
+msgid "Please enter a valid ISO 8601 day, begining with \"---\"."
+msgstr ""
+
+#: config/module.config.php:50
+msgid "Please enter a valid ISO 8601 month, begining with \"--\"."
+msgstr ""
+
+#: config/module.config.php:51
+msgid "Please enter a valid ISO 8601 month and day, begining with \"--\"."
+msgstr ""
+
+#: config/module.config.php:52
+msgid "Please enter a valid ISO 8601 year, with four digits."
+msgstr ""
+
+#: config/module.config.php:53
+msgid ""
+"Please enter a valid ISO 8601 year, with four digits, followed by a \"-\" "
+"and a month with two digits."
+msgstr ""
+
+#: config/module.config.php:55
+msgid "True/False"
+msgstr ""
+
+#: config/module.config.php:56
+msgid "Year"
+msgstr ""
+
+#: config/module.config.php:57
+msgid "Year Month"
+msgstr ""
