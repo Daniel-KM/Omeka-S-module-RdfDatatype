@@ -4,6 +4,7 @@ namespace RdfDatatype;
 return [
     'data_types' => [
         'invokables' => [
+            'xsd:boolean' => DataType\XsdBoolean::class,
             'xsd:integer' => DataType\XsdInteger::class,
         ],
     ],
@@ -19,5 +20,6 @@ return [
     ],
     'js_translate_strings' => [
         'Number', // @translate
+        'True/False', // @translate
     ],
 ];
