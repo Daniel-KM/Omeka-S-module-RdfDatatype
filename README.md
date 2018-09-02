@@ -4,7 +4,8 @@ RDF Datatype (module for Omeka S)
 [RDF Datatype] is a module for [Omeka S] that implements the main [RDF datatypes]
 and [XSD datatypes] recommended by the World Wide Web consortium [W3C], so the
 values of properties may have a better semanticity, not only the default text,
-Omeka resource and URI, but boolean, integer, decimal, date, html and xml too.
+Omeka resource and URI, but boolean, integer, decimal, date, time, html and xml
+too.
 
 
 Installation
@@ -31,7 +32,10 @@ TODO
 - Add a batch process to change the type of a property for a list of resources.
 - Add xsd:token or a derivative for standard or custom enumerations (language, etc.).
 - Add xsd:anyURI for uris.
+- Normalize Zend form for xsd:time, that requires seconds.
 - Simplify search ([Omeka S issue #1241]).
+- Manage restrictions via the resource templates (default value for boolean,
+  range, default tokens, with or without seconds…).
 
 
 Warning

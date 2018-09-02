@@ -8,6 +8,7 @@ return [
             'xsd:date' => DataType\XsdDate::class,
             'xsd:decimal' => DataType\XsdDecimal::class,
             'xsd:integer' => DataType\XsdInteger::class,
+            'xsd:time' => DataType\XsdTime::class,
         ],
     ],
     'translator' => [
@@ -25,6 +26,7 @@ return [
         'Decimal', // @translate
         'Number', // @translate
         'Please enter a valid decimal number.', // @translate
+        'Time', // @translate
         'True/False', // @translate
     ],
 ];

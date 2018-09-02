@@ -18,6 +18,10 @@ $(document).ready( function() {
             .text(Omeka.jsTranslate('Date'))
             .appendTo(defaultSelectors);
         defaultSelectors.append("\n");
+        $('<a>', {'class': 'add-value button o-icon-xsd-time', 'href': '#', 'data-type': 'xsd:time',})
+            .text(Omeka.jsTranslate('Time'))
+            .appendTo(defaultSelectors);
+        defaultSelectors.append("\n");
     });
 
     $(document).on('o:prepare-value', function(e, type, value) {

@@ -14,3 +14,6 @@ input.xsd-integer {
 .o-icon-xsd-integer:before {
     content: "\f292";
 }
+.o-icon-xsd-time:before {
+    content: "\f017";
+}
