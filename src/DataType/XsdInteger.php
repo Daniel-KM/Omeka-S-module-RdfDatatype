@@ -1,14 +1,13 @@
 <?php
 namespace RdfDatatype\DataType;
 
-use Omeka\Api\Adapter\AbstractEntityAdapter;
-use Omeka\Api\Representation\ValueRepresentation;
-use Omeka\DataType\AbstractDataType;
-use Omeka\Entity\Value;
 use Zend\Form\Element;
 use Zend\View\Renderer\PhpRenderer;
 
-class XsdInteger extends AbstractDataType
+/**
+ * @url http://www.w3.org/TR/xmlschema11-2/#integer
+ */
+class XsdInteger extends AbstractRdfDatatype
 {
     public function getName()
     {
@@ -18,16 +17,6 @@ class XsdInteger extends AbstractDataType
     public function getLabel()
     {
         return 'Integer'; // @translate
-    }
-
-    public function getOptgroupLabel()
-    {
-        return 'RDF Datatype'; // @translate
-    }
-
-    public function prepareForm(PhpRenderer $view)
-    {
-        $view->headLink()->appendStylesheet($view->assetUrl('css/rdf-datatype.css', 'RdfDatatype'));
     }
 
     public function form(PhpRenderer $view)
@@ -45,26 +34,5 @@ class XsdInteger extends AbstractDataType
     {
         return isset($valueObject['@value'])
             && ctype_digit(trim($valueObject['@value']));
-    }
-
-    public function hydrate(array $valueObject, Value $value, AbstractEntityAdapter $adapter)
-    {
-        $value->setValue(trim($valueObject['@value']));
-        // Set defaults.
-        $value->setLang(null);
-        $value->setUri(null);
-        $value->setValueResource(null);
-    }
-
-    public function render(PhpRenderer $view, ValueRepresentation $value)
-    {
-        return $value->value();
-    }
-
-    public function getJsonLd(ValueRepresentation $value)
-    {
-        return [
-            '@value' => $value->value(),
-        ];
     }
 }

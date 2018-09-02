@@ -3,7 +3,6 @@ namespace RdfDatatype\DataType;
 
 use Omeka\Api\Adapter\AbstractEntityAdapter;
 use Omeka\Api\Representation\ValueRepresentation;
-use Omeka\DataType\AbstractDataType;
 use Omeka\Entity\Value;
 use Zend\Form\Element;
 use Zend\View\Renderer\PhpRenderer;
@@ -11,7 +10,7 @@ use Zend\View\Renderer\PhpRenderer;
 /**
  * @url http://www.w3.org/TR/xmlschema11-2/#boolean
  */
-class XsdBoolean extends AbstractDataType
+class XsdBoolean extends AbstractRdfDatatype
 {
     public function getName()
     {
@@ -21,16 +20,6 @@ class XsdBoolean extends AbstractDataType
     public function getLabel()
     {
         return 'Boolean'; // @translate
-    }
-
-    public function getOptgroupLabel()
-    {
-        return 'RDF Datatype'; // @translate
-    }
-
-    public function prepareForm(PhpRenderer $view)
-    {
-        $view->headLink()->appendStylesheet($view->assetUrl('css/rdf-datatype.css', 'RdfDatatype'));
     }
 
     public function form(PhpRenderer $view)
