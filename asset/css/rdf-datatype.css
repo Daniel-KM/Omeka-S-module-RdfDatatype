@@ -3,6 +3,11 @@ input.xsd-decimal,
 input.xsd-integer {
     width: 100%;
 }
+.o-icon-rdf-html:before {
+    /* Unavailable in the default config of Omeka. */
+    /* content: "\f13b"; */
+    content: "\f121";
+}
 .o-icon-xsd-boolean:before {
     content: "\f00c";
 }
