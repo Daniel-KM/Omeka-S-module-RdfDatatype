@@ -2,50 +2,72 @@ $(document).ready( function() {
 
     $(function() {
         var defaultSelectors = $('#properties .resource-values div.default-selector');
-        $('<a>', {'class': 'add-value button o-icon-xsd-boolean', 'href': '#', 'data-type': 'xsd:boolean',})
-            .text(Omeka.jsTranslate('True/False'))
-            .appendTo(defaultSelectors);
-        defaultSelectors.append("\n");
-        $('<a>', {'class': 'add-value button o-icon-xsd-integer', 'href': '#', 'data-type': 'xsd:integer',})
-            .text(Omeka.jsTranslate('Number'))
-            .appendTo(defaultSelectors);
-        defaultSelectors.append("\n");
-        $('<a>', {'class': 'add-value button o-icon-xsd-decimal', 'href': '#', 'data-type': 'xsd:decimal',})
-            .text(Omeka.jsTranslate('Decimal'))
-            .appendTo(defaultSelectors);
-        defaultSelectors.append("\n");
-        $('<a>', {'class': 'add-value button o-icon-xsd-date', 'href': '#', 'data-type': 'xsd:date',})
-            .text(Omeka.jsTranslate('Date'))
-            .appendTo(defaultSelectors);
-        defaultSelectors.append("\n");
-        $('<a>', {'class': 'add-value button o-icon-xsd-time', 'href': '#', 'data-type': 'xsd:time',})
-            .text(Omeka.jsTranslate('Time'))
-            .appendTo(defaultSelectors);
-        defaultSelectors.append("\n");
-        $('<a>', {'class': 'add-value button o-icon-xsd-date-time', 'href': '#', 'data-type': 'xsd:dateTime',})
-            .text(Omeka.jsTranslate('Date Time'))
-            .appendTo(defaultSelectors);
-        defaultSelectors.append("\n");
-        $('<a>', {'class': 'add-value button o-icon-xsd-g-year', 'href': '#', 'data-type': 'xsd:gYear',})
-            .text(Omeka.jsTranslate('Year'))
-            .appendTo(defaultSelectors);
-        defaultSelectors.append("\n");
-        $('<a>', {'class': 'add-value button o-icon-xsd-g-year-month', 'href': '#', 'data-type': 'xsd:gYearMonth',})
-            .text(Omeka.jsTranslate('Year Month'))
-            .appendTo(defaultSelectors);
-        defaultSelectors.append("\n");
-        $('<a>', {'class': 'add-value button o-icon-xsd-g-month', 'href': '#', 'data-type': 'xsd:gMonth',})
-            .text(Omeka.jsTranslate('Month'))
-            .appendTo(defaultSelectors);
-        defaultSelectors.append("\n");
-        $('<a>', {'class': 'add-value button o-icon-xsd-g-month-day', 'href': '#', 'data-type': 'xsd:gMonthDay',})
-            .text(Omeka.jsTranslate('Month Day'))
-            .appendTo(defaultSelectors);
-        defaultSelectors.append("\n");
-        $('<a>', {'class': 'add-value button o-icon-xsd-g-day', 'href': '#', 'data-type': 'xsd:gDay',})
-            .text(Omeka.jsTranslate('Day'))
-            .appendTo(defaultSelectors);
-        defaultSelectors.append("\n");
+        if (rdfDatatypes.indexOf('xsd:boolean') != -1) {
+            $('<a>', {'class': 'add-value button o-icon-xsd-boolean', 'href': '#', 'data-type': 'xsd:boolean'})
+                .text(Omeka.jsTranslate('True/False'))
+                .appendTo(defaultSelectors);
+            defaultSelectors.append("\n");
+        }
+        if (rdfDatatypes.indexOf('xsd:integer') != -1) {
+            $('<a>', {'class': 'add-value button o-icon-xsd-integer', 'href': '#', 'data-type': 'xsd:integer'})
+                .text(Omeka.jsTranslate('Number'))
+                .appendTo(defaultSelectors);
+            defaultSelectors.append("\n");
+        }
+        if (rdfDatatypes.indexOf('xsd:decimal') != -1) {
+            $('<a>', {'class': 'add-value button o-icon-xsd-decimal', 'href': '#', 'data-type': 'xsd:decimal'})
+                .text(Omeka.jsTranslate('Decimal'))
+                .appendTo(defaultSelectors);
+            defaultSelectors.append("\n");
+        }
+        if (rdfDatatypes.indexOf('xsd:date') != -1) {
+            $('<a>', {'class': 'add-value button o-icon-xsd-date', 'href': '#', 'data-type': 'xsd:date'})
+                .text(Omeka.jsTranslate('Date'))
+                .appendTo(defaultSelectors);
+            defaultSelectors.append("\n");
+        }
+        if (rdfDatatypes.indexOf('xsd:time') != -1) {
+            $('<a>', {'class': 'add-value button o-icon-xsd-time', 'href': '#', 'data-type': 'xsd:time'})
+                .text(Omeka.jsTranslate('Time'))
+                .appendTo(defaultSelectors);
+            defaultSelectors.append("\n");
+        }
+        if (rdfDatatypes.indexOf('xsd:dateTime') != -1) {
+            $('<a>', {'class': 'add-value button o-icon-xsd-date-time', 'href': '#', 'data-type': 'xsd:dateTime'})
+                .text(Omeka.jsTranslate('Date Time'))
+                .appendTo(defaultSelectors);
+            defaultSelectors.append("\n");
+        }
+        if (rdfDatatypes.indexOf('xsd:gYear') != -1) {
+            $('<a>', {'class': 'add-value button o-icon-xsd-g-year', 'href': '#', 'data-type': 'xsd:gYear'})
+                .text(Omeka.jsTranslate('Year'))
+                .appendTo(defaultSelectors);
+            defaultSelectors.append("\n");
+        }
+        if (rdfDatatypes.indexOf('xsd:gYearMonth') != -1) {
+            $('<a>', {'class': 'add-value button o-icon-xsd-g-year-month', 'href': '#', 'data-type': 'xsd:gYearMonth'})
+                .text(Omeka.jsTranslate('Year Month'))
+                .appendTo(defaultSelectors);
+            defaultSelectors.append("\n");
+        }
+        if (rdfDatatypes.indexOf('xsd:gMonth') != -1) {
+            $('<a>', {'class': 'add-value button o-icon-xsd-g-month', 'href': '#', 'data-type': 'xsd:gMonth'})
+                .text(Omeka.jsTranslate('Month'))
+                .appendTo(defaultSelectors);
+            defaultSelectors.append("\n");
+        }
+        if (rdfDatatypes.indexOf('xsd:gMonthDay') != -1) {
+            $('<a>', {'class': 'add-value button o-icon-xsd-g-month-day', 'href': '#', 'data-type': 'xsd:gMonthDay'})
+                .text(Omeka.jsTranslate('Month Day'))
+                .appendTo(defaultSelectors);
+            defaultSelectors.append("\n");
+        }
+        if (rdfDatatypes.indexOf('xsd:gDay') != -1) {
+            $('<a>', {'class': 'add-value button o-icon-xsd-g-day', 'href': '#', 'data-type': 'xsd:gDay'})
+                .text(Omeka.jsTranslate('Day'))
+                .appendTo(defaultSelectors);
+            defaultSelectors.append("\n");
+        }
     });
 
     $(document).on('o:prepare-value', function(e, type, value) {

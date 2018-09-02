@@ -17,6 +17,11 @@ return [
             'xsd:time' => DataType\XsdTime::class,
         ],
     ],
+    'form_elements' => [
+        'invokables' => [
+            Form\ConfigForm::class => Form\ConfigForm::class,
+        ],
+    ],
     'translator' => [
         'translation_file_patterns' => [
             [
@@ -46,5 +51,22 @@ return [
         'True/False', // @translate
         'Year', // @translate
         'Year Month', // @translate
+    ],
+    'rdfdatatype' => [
+        'config' => [
+            'rdfdatatype_datatypes' => [
+                'xsd:boolean',
+                'xsd:integer',
+                'xsd:decimal',
+                'xsd:date',
+                'xsd:time',
+                'xsd:dateTime',
+                'xsd:gYear',
+                'xsd:gYearMonth',
+                // 'xsd:gMonthDay',
+                // 'xsd:gMonth',
+                // 'xsd:gDay',
+            ],
+        ],
     ],
 ];
