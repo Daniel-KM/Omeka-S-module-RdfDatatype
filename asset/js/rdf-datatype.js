@@ -8,6 +8,12 @@ $(document).ready( function() {
                 .appendTo(defaultSelectors);
             defaultSelectors.append("\n");
         }
+        if (rdfDatatypes.indexOf('rdf:XMLLiteral') != -1) {
+            $('<a>', {'class': 'add-value button o-icon-rdf-xml-literal', 'href': '#', 'data-type': 'rdf:XMLLiteral'})
+                .text(Omeka.jsTranslate('Xml'))
+                .appendTo(defaultSelectors);
+            defaultSelectors.append("\n");
+        }
         if (rdfDatatypes.indexOf('xsd:boolean') != -1) {
             $('<a>', {'class': 'add-value button o-icon-xsd-boolean', 'href': '#', 'data-type': 'xsd:boolean'})
                 .text(Omeka.jsTranslate('True/False'))

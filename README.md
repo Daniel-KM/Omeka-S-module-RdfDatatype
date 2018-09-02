@@ -40,7 +40,7 @@ TODO
 - Normalize Zend form for xsd:time, that requires seconds.
 - Simplify search ([Omeka S issue #1241]).
 - Manage restrictions via the resource templates (default value for boolean,
-  range, default tokens, with or without seconds…).
+  range, default tokens, with or without seconds, css for html, xsl for xml…).
 
 
 Warning

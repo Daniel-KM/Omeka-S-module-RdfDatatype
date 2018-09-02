@@ -16,6 +16,7 @@ class ConfigForm extends Form
                 'info' => 'The selected datatypes will be automatically available in resource forms. All the datatypes are available via the resource templates.', // @translate
                 'value_options' => [
                     'rdf:HTML' => 'Html', // @translate
+                    'rdf:XMLLiteral' => 'Xml', // @translate
                     'xsd:boolean' => 'Boolean', // @translate
                     'xsd:integer' => 'Integer', // @translate
                     'xsd:decimal' => 'Decimal', // @translate

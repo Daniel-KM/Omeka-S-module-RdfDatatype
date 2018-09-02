@@ -8,6 +8,9 @@ input.xsd-integer {
     /* content: "\f13b"; */
     content: "\f121";
 }
+.o-icon-rdf-xml-literal:before {
+    content: "\f121";
+}
 .o-icon-xsd-boolean:before {
     content: "\f00c";
 }

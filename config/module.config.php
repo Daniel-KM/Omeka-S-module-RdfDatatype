@@ -5,6 +5,7 @@ return [
     'data_types' => [
         'invokables' => [
             'rdf:HTML' => DataType\RdfHtml::class,
+            'rdf:XMLLiteral' => DataType\RdfXmlLiteral::class,
             'xsd:boolean' => DataType\XsdBoolean::class,
             'xsd:date' => DataType\XsdDate::class,
             'xsd:dateTime' => DataType\XsdDateTime::class,
@@ -57,6 +58,7 @@ return [
         'config' => [
             'rdfdatatype_datatypes' => [
                 'rdf:HTML',
+                // 'rdf:XMLLiteral',
                 'xsd:boolean',
                 'xsd:integer',
                 'xsd:decimal',
