@@ -3,9 +3,27 @@ RDF Datatype (module for Omeka S)
 
 [RDF Datatype] is a module for [Omeka S] that implements the main [RDF datatypes]
 and [XSD datatypes] recommended by the World Wide Web consortium [W3C], so the
-values of properties may have a better semanticity, not only the default text,
-Omeka resource and URI, but boolean, integer, decimal, date, time, html and xml
-too.
+values of properties may have a better semanticity.
+
+Default Omeka datatypes:
+- text
+- Omeka resource (item, item set, media)
+- uri
+
+Added rdf and xsd datatypes:
+- [`rdf:HTML`](https://www.w3.org/TR/rdf11-concepts/#section-html): an html fragment
+- [`rdf:XMLLiteral`](https://www.w3.org/TR/rdf11-concepts/#section-XMLLiteral): an xml fragment
+- [`xsd:boolean`](https://www.w3.org/TR/xmlschema11-2/#boolean): true or false
+- [`xsd:integer`](https://www.w3.org/TR/xmlschema11-2/#integer): a simple number
+- [`xsd:decimal`](https://www.w3.org/TR/xmlschema11-2/#decimal): a decimal number
+- [`xsd:dateTime`](https://www.w3.org/TR/xmlschema11-2/#dateTime): a full ISO 8601 date time
+- [`xsd:date`](https://www.w3.org/TR/xmlschema11-2/#date): an ISO 8601 date
+- [`xsd:time`](https://www.w3.org/TR/xmlschema11-2/#time): an ISO 8601 time
+- [`xsd:gYear`](https://www.w3.org/TR/xmlschema11-2/#gYear): a Gregorian year
+- [`xsd:gYearMonth`](https://www.w3.org/TR/xmlschema11-2/#gYearMonth): a Gregorian year and month
+- [`xsd:gMonth`](https://www.w3.org/TR/xmlschema11-2/#gMonth): a Gregorian month
+- [`xsd:gMonthDay`](https://www.w3.org/TR/xmlschema11-2/#gMonthDay): a Gregorian month and day
+- [`xsd:gDay`](https://www.w3.org/TR/xmlschema11-2/#gDay): a Gregorian day of month
 
 
 Installation
@@ -20,13 +38,18 @@ config instructions.
 Usage
 -----
 
-The data types are automatically available in all the resource forms.
-Nevertheless, it is recommended to create resources templates in order to
-simplify their use and to normalize the records.
+The data types that are set in the config of the module are automatically
+available in all the resource forms. It is advisable to avoid to overload the
+user interface.
+
+In all cases, it is recommended to create resources templates in order to
+simplify the use of the datatypes and to normalize all the metadata of all the
+records.
 
 Note: the datatypes `xsd:gMonth`, `xsd:gMonthDay` and `xsd:gDay` may not be
 intuitive. To be compliant with the standard, they should be prepended with `--`
-for months, and `---` for day. They are not added automatically.
+for months, and `---` for day. They are not added automatically. Furthermore,
+sparql cannot request any of the the Gregorian datatypes.
 
 
 TODO
@@ -41,6 +64,8 @@ TODO
 - Simplify search ([Omeka S issue #1241]).
 - Manage restrictions via the resource templates (default value for boolean,
   range, default tokens, with or without seconds, css for html, xsl for xml…).
+- Allow to attach multiple selected datatypes to resource templates (in
+  particular for subjects).
 
 
 Warning

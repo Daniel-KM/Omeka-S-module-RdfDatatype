@@ -7,7 +7,7 @@ use Zend\Form\Element;
 use Zend\View\Renderer\PhpRenderer;
 
 /**
- * @url http://www.w3.org/TR/xmlschema11-2/#time
+ * @url https://www.w3.org/TR/xmlschema11-2/#time
  */
 class XsdTime extends AbstractRdfDatatype
 {
