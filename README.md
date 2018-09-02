@@ -32,8 +32,8 @@ for months, and `---` for day. They are not added automatically.
 TODO
 ----
 
-- Use a javascript for html and xml (ckeditor?).
 - Use a javascript for xsd:dateTime.
+- Use a purifier for rdf:XMLLiteral.
 - Add a batch process to change the type of a property for a list of resources.
 - Add xsd:token or a derivative for standard or custom enumerations (language, etc.).
 - Add xsd:anyURI for uris.

@@ -3,6 +3,7 @@ namespace RdfDatatype\DataType;
 
 use Omeka\Api\Adapter\AbstractEntityAdapter;
 use Omeka\Entity\Value;
+use Omeka\Stdlib\HtmlPurifier;
 use Zend\Form\Element;
 use Zend\View\Renderer\PhpRenderer;
 
@@ -11,6 +12,16 @@ use Zend\View\Renderer\PhpRenderer;
  */
 class RdfHtml extends AbstractRdfDatatype
 {
+    /**
+     * @var HtmlPurifier
+     */
+    protected $htmlPurifier;
+
+    public function __construct(HtmlPurifier $htmlPurifier)
+    {
+        $this->htmlPurifier = $htmlPurifier;
+    }
+
     public function getName()
     {
         return 'rdf:HTML';
@@ -37,12 +48,14 @@ class RdfHtml extends AbstractRdfDatatype
 
     public function isValid(array $valueObject)
     {
-        return true;
+        return isset($valueObject['@value'])
+            && $this->htmlPurifier->purify(trim($valueObject['@value'])) !== '';
     }
 
     public function hydrate(array $valueObject, Value $value, AbstractEntityAdapter $adapter)
     {
-        $value->setValue(trim($valueObject['@value']));
+        $val = $this->htmlPurifier->purify(trim($valueObject['@value']));
+        $value->setValue($val);
         // Set defaults.
         // According to the recommandation, the language must be included
         // explicitly in the HTML literal.

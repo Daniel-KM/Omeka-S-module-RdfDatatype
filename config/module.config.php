@@ -4,7 +4,6 @@ namespace RdfDatatype;
 return [
     'data_types' => [
         'invokables' => [
-            'rdf:HTML' => DataType\RdfHtml::class,
             'rdf:XMLLiteral' => DataType\RdfXmlLiteral::class,
             'xsd:boolean' => DataType\XsdBoolean::class,
             'xsd:date' => DataType\XsdDate::class,
@@ -17,6 +16,9 @@ return [
             'xsd:gYearMonth' => DataType\XsdGYearMonth::class,
             'xsd:integer' => DataType\XsdInteger::class,
             'xsd:time' => DataType\XsdTime::class,
+        ],
+        'factories' => [
+            'rdf:HTML' => Service\DataType\RdfHtmlFactory::class,
         ],
     ],
     'form_elements' => [
