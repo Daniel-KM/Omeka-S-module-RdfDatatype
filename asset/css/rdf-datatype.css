@@ -1,0 +1,6 @@
+input.xsd-integer {
+    width: 100%;
+}
+.o-icon-xsd-integer:before {
+    content: "\f292";
+}
