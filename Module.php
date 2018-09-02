@@ -123,6 +123,5 @@ class Module extends AbstractModule
         $settings = $this->getServiceLocator()->get('Omeka\Settings');
         $rdfDatatypes = $settings->get('rdfdatatype_datatypes', []);
         $view->headScript()->appendScript('var rdfDatatypes = ' . json_encode($rdfDatatypes, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . ';');
-        $view->headScript()->appendFile($view->assetUrl('js/rdf-datatype.js', __NAMESPACE__));
     }
 }

@@ -83,7 +83,18 @@ $(document).ready( function() {
     });
 
     $(document).on('o:prepare-value', function(e, type, value) {
-        if (type === 'xsd:boolean') {
+        if (type === 'rdf:HTML') {
+            var thisValue = $(value);
+            // Append the ckeditor dynamically.
+            thisValue.find('.wyziwyg').each(function () {
+                var editor = CKEDITOR.inline(this, {
+                    on: {change: function() {
+                        this.updateElement();
+                    }},
+                });
+                $(this).data('ckeditorInstance', editor);
+            })
+        } else if (type === 'xsd:boolean') {
             var thisValue = $(value);
             var userInput = thisValue.find('.input-value');
             var valueInput = thisValue.find('input[data-value-key="@value"]');

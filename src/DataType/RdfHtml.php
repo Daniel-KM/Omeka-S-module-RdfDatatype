@@ -23,9 +23,12 @@ class RdfHtml extends AbstractRdfDatatype
 
     public function form(PhpRenderer $view)
     {
+        // CKEditor is not enabled for item sets neither medias (the helper
+        // avoids to reload it for items).
+        $view->ckEditor();
         $element = new Element\Textarea('rdf-html');
         $element->setAttributes([
-            'class' => 'value to-require rdf-html',
+            'class' => 'value to-require rdf-html wyziwyg',
             'data-value-key' => '@value',
             'placeholder' => '<p>input <em>your</em> <strong>html</strong> content</p>', // @translate
         ]);

@@ -17,6 +17,7 @@ abstract class AbstractRdfDatatype extends AbstractDataType
     public function prepareForm(PhpRenderer $view)
     {
         $view->headLink()->appendStylesheet($view->assetUrl('css/rdf-datatype.css', 'RdfDatatype'));
+        $view->headScript()->appendFile($view->assetUrl('js/rdf-datatype.js', 'RdfDatatype'));
     }
 
     public function hydrate(array $valueObject, Value $value, AbstractEntityAdapter $adapter)
