@@ -14,6 +14,10 @@ $(document).ready( function() {
             .text(Omeka.jsTranslate('Decimal'))
             .appendTo(defaultSelectors);
         defaultSelectors.append("\n");
+        $('<a>', {'class': 'add-value button o-icon-xsd-date', 'href': '#', 'data-type': 'xsd:date',})
+            .text(Omeka.jsTranslate('Date'))
+            .appendTo(defaultSelectors);
+        defaultSelectors.append("\n");
     });
 
     $(document).on('o:prepare-value', function(e, type, value) {

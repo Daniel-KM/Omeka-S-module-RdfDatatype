@@ -5,6 +5,7 @@ return [
     'data_types' => [
         'invokables' => [
             'xsd:boolean' => DataType\XsdBoolean::class,
+            'xsd:date' => DataType\XsdDate::class,
             'xsd:decimal' => DataType\XsdDecimal::class,
             'xsd:integer' => DataType\XsdInteger::class,
         ],
@@ -20,6 +21,7 @@ return [
         ],
     ],
     'js_translate_strings' => [
+        'Date', // @translate
         'Decimal', // @translate
         'Number', // @translate
         'Please enter a valid decimal number.', // @translate

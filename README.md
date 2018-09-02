@@ -27,7 +27,6 @@ simplify their use and to normalize the records.
 TODO
 ----
 
-- Use a javascript for date.
 - Use a javascript for html and xml (ckeditor?).
 - Add a batch process to change the type of a property for a list of resources.
 - Add xsd:token or a derivative for standard or custom enumerations (language, etc.).
