@@ -34,3 +34,21 @@ input.xsd-integer {
 .o-icon-xsd-time:before {
     content: "\f017";
 }
+
+.inputs .cke_textarea_inline {
+    resize: vertical;
+    line-height: 1.5;
+    background-color: #fff;
+    min-width: 0;
+}
+.inputs .value .cke_textarea_inline {
+    width: 100%;
+    margin: 0;
+}
+.inputs .value a.value-language ~ .cke_textarea_inline {
+    padding-left: 42px;
+}
+.inputs input[type="text"].value-language.active.active ~ .cke_textarea_inline {
+    padding-left: 6px;
+    border-top: 0;
+}

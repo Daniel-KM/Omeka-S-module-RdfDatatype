@@ -2,6 +2,7 @@
 namespace RdfDatatype\DataType;
 
 use Omeka\Api\Adapter\AbstractEntityAdapter;
+use Omeka\Api\Representation\ValueRepresentation;
 use Omeka\Entity\Value;
 use Omeka\Stdlib\HtmlPurifier;
 use Zend\Form\Element;
@@ -43,7 +44,12 @@ class RdfHtml extends AbstractRdfDatatype
             'data-value-key' => '@value',
             'placeholder' => '<p>input <em>your</em> <strong>html</strong> content</p>', // @translate
         ]);
-        return $view->formTextarea($element);
+
+        $translate = $view->plugin('translate');
+        $html = $view->hyperlink('', '#', ['class' => 'value-language o-icon-language', 'title' => $translate('Set language'), ]);
+        $html .= '<input class="value-language" type="text" data-value-key="@language" aria-label="' . $translate('Language') . '">';
+        $html .= $view->formTextarea($element);
+        return $html;
     }
 
     public function isValid(array $valueObject)
@@ -58,10 +64,25 @@ class RdfHtml extends AbstractRdfDatatype
         $value->setValue($val);
         // Set defaults.
         // According to the recommandation, the language must be included
-        // explicitly in the HTML literal.
+        // explicitly in the HTML literal. Nevertheless, it can be saved for
+        // Omeka purposes.
         // TODO Manage the language for html.
-        $value->setLang(null);
+        if (isset($valueObject['@language'])) {
+            $value->setLang($valueObject['@language']);
+        } else {
+            $value->setLang(null);
+        }
         $value->setUri(null);
         $value->setValueResource(null);
+    }
+
+    public function getJsonLd(ValueRepresentation $value)
+    {
+        $jsonLd = ['@value' => $value->value()];
+        $lang = $value->lang();
+        if ($lang) {
+            $jsonLd['@language'] = $lang;
+        }
+        return $jsonLd;
     }
 }
