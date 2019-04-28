@@ -2,8 +2,9 @@ RDF Datatype (module for Omeka S)
 =================================
 
 [RDF Datatype] is a module for [Omeka S] that implements the main [RDF datatypes]
-and [XSD datatypes] recommended by the World Wide Web consortium [W3C], so the
-values of properties may have a better semanticity.
+and [XSD datatypes] that are recommended by the World Wide Web consortium [W3C]
+in order to simplify user input and to give a better semanticity to the values
+of the properties.
 
 Default Omeka datatypes:
 - text

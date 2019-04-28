@@ -3,7 +3,8 @@
  * RdfDatatype
  *
  * Implement the main W3C RDF datatypes (html, xml, boolean, integer, decimal
- * and date/time) in order to give more semanticity to values of resources.
+ * and date/time) in order to simplify user input and to give more semanticity
+ * to values of resources.
  *
  * @copyright Daniel Berthereau, 2018
  * @license http://www.cecill.info/licences/Licence_CeCILL_V2.1-en.txt
