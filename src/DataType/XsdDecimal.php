@@ -5,7 +5,7 @@ use Zend\Form\Element;
 use Zend\View\Renderer\PhpRenderer;
 
 /**
- * @url http://www.w3.org/TR/xmlschema11-2/#decimal
+ * @url https://www.w3.org/TR/xmlschema11-2/#decimal
  */
 class XsdDecimal extends AbstractRdfDatatype
 {
