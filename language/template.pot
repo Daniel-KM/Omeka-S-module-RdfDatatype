@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-03 00:00+0200\n"
+"POT-Creation-Date: 2019-11-04 00:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,13 +17,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Module.php:115
+#: Module.php:116
 msgid ""
 "Avoid overloading the user interface and use the resource templates as much "
 "as possible."
 msgstr ""
 
-#: Module.php:118
+#: Module.php:119
 msgid ""
 "Note: the datatypes Gregorian Month, Month day and Day require a specific "
 "format (two or three dashes prepended) to be fully compliant with the "
@@ -138,8 +138,16 @@ msgstr ""
 msgid "Input an integer…"
 msgstr ""
 
-#: src/DataType/RdfHtml.php:44
+#: src/DataType/RdfHtml.php:45
 msgid "<p>input <em>your</em> <strong>html</strong> content</p>"
+msgstr ""
+
+#: src/DataType/XsdToken.php:32
+msgid "Token"
+msgstr ""
+
+#: src/DataType/XsdToken.php:41
+msgid "Select a term in the list"
 msgstr ""
 
 #: src/DataType/XsdGYear.php:30
