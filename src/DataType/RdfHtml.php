@@ -46,7 +46,7 @@ class RdfHtml extends AbstractRdfDatatype
         ]);
 
         $translate = $view->plugin('translate');
-        $html = $view->hyperlink('', '#', ['class' => 'value-language o-icon-language', 'title' => $translate('Set language'), ]);
+        $html = $view->hyperlink('', '#', ['class' => 'value-language o-icon-language', 'title' => $translate('Set language')]);
         $html .= '<input class="value-language" type="text" data-value-key="@language" aria-label="' . $translate('Language') . '">';
         $html .= $view->formTextarea($element);
         return $html;
