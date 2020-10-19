@@ -3,9 +3,9 @@
     /**
      * Prepare the markup for the default data types.
      */
-    $(document).on('o:prepare-value', function(e, type, value, valueObj, namePrefix) {
+    $(document).on('o:prepare-value', function(e, dataType, value, valueObj, namePrefix) {
         // Prepare markup for some specific resource data types.
-        if (type === 'rdf:HTML') {
+        if (dataType === 'rdf:HTML') {
             var thisValue = $(value);
             // Append the ckeditor.
             thisValue.find('.wyziwyg').each(function () {
@@ -16,7 +16,7 @@
                 });
                 $(this).data('ckeditorInstance', editor);
             })
-        } else if (type === 'xsd:boolean') {
+        } else if (dataType === 'xsd:boolean') {
             var thisValue = $(value);
             var userInput = thisValue.find('.input-value');
             var valueInput = thisValue.find('input[data-value-key="@value"]');
@@ -166,36 +166,36 @@
      * Check user input against official regexes provided by the w3c.
      *
      * @param object element
-     * @param string datatype
+     * @param string dataType
      */
-    var regexCheck = function(element, datatype) {
+    var regexCheck = function(element, dataType) {
         var regex, message;
         var val = element.value.trim();
-        if (datatype === 'xsd:decimal') {
+        if (dataType === 'xsd:decimal') {
             // @url https://www.w3.org/TR/xmlschema11-2/#decimal
             regex = /^(\+|-)?([0-9]+(\.[0-9]*)?|\.[0-9]+)$/;
             message = 'Please enter a valid decimal number.';
-        } else if (datatype === 'xsd:dateTime') {
+        } else if (dataType === 'xsd:dateTime') {
             // @url https://www.w3.org/TR/xmlschema11-2/#nt-dateTimeRep
             regex = /^-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?|(24:00:00(\.0+)?))(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?$/;
             message = 'Please enter a valid ISO 8601 full date time, with or without time zone offset.';
-        } else if (datatype === 'xsd:gYear') {
+        } else if (dataType === 'xsd:gYear') {
             // @url https://www.w3.org/TR/xmlschema11-2/#nt-gYearRep
             regex = /^-?([1-9][0-9]{3,}|0[0-9]{3})(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?$/;
             message = 'Please enter a valid ISO 8601 year, with four digits.';
-        } else if (datatype === 'xsd:gYearMonth') {
+        } else if (dataType === 'xsd:gYearMonth') {
             // @url https://www.w3.org/TR/xmlschema11-2/#nt-gYearMonthRep
             regex = /^-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?$/;
             message = 'Please enter a valid ISO 8601 year, with four digits, followed by a "-" and a month with two digits.';
-        } else if (datatype === 'xsd:gMonth') {
+        } else if (dataType === 'xsd:gMonth') {
             // @url https://www.w3.org/TR/xmlschema11-2/#nt-gMonthRep
             regex = /^--(0[1-9]|1[0-2])(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?$/;
             message = 'Please enter a valid ISO 8601 month, begining with "--".';
-        } else if (datatype === 'xsd:gMonthDay') {
+        } else if (dataType === 'xsd:gMonthDay') {
             // @url https://www.w3.org/TR/xmlschema11-2/#nt-gMonthDayRep
             regex = /^--(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?$/;
             message = 'Please enter a valid ISO 8601 month and day, begining with "--".';
-        } else if (datatype === 'xsd:gDay') {
+        } else if (dataType === 'xsd:gDay') {
             // @url https://www.w3.org/TR/xmlschema11-2/#nt-gDayRep
             regex = /^---(0[1-9]|[12][0-9]|3[01])(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?$/;
             message = 'Please enter a valid ISO 8601 day, begining with "---".';
