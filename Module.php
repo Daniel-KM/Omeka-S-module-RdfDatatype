@@ -35,6 +35,8 @@
 namespace RdfDatatype;
 
 use Omeka\Module\AbstractModule;
+use Omeka\Mvc\Controller\Plugin\Messenger;
+use Omeka\Stdlib\Message;
 use RdfDatatype\Form\ConfigForm;
 use Zend\EventManager\Event;
 use Zend\EventManager\SharedEventManagerInterface;
@@ -57,6 +59,27 @@ class Module extends AbstractModule
     public function uninstall(ServiceLocatorInterface $serviceLocator)
     {
         $this->manageSettings($serviceLocator->get('Omeka\Settings'), 'uninstall');
+    }
+
+    public function upgrade($oldVersion, $newVersion, ServiceLocatorInterface $services)
+    {
+        if (version_compare($oldVersion, '3.0.4.1', '<')) {
+            $message = new Message(
+                'This module has been replaced by modules %1$sData Type RDF%3$s (html, xml, boolean) and %2$sNumeric Data Types%3$s (integer, date time). Install them for an automatic upgrade.', // @translate
+                '<a href="https://gitlab.com/Daniel-KM/Omeka-S-module-DataTypeRdf" target="_blank">',
+                '<a href="https://github.com/omeka-s-modules/NumericDataTypes" target="_blank">',
+                '</a>'
+            );
+            $message->setEscapeHtml(false);
+            $messenger = new Messenger();
+            $messenger->addSuccess($message);
+
+            $message = new Message(
+                'Other data types (decimal and partial date/time) are converted into literal.' // @translate
+            );
+            $message->setEscapeHtml(false);
+            $messenger->addWarning($message);
+        }
     }
 
     protected function manageSettings($settings, $process, $key = 'config')
