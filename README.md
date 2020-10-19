@@ -1,5 +1,12 @@
-RDF Datatype (module for Omeka S)
+RDF Datatype (module for Omeka S) [archived]
 =================================
+
+> **IMPORTANT**
+> This module is deprecated and replaced by the modules [Data Type RDF], that
+> manages html, xml, and boolean, and [Numeric Data Types], that manages integer
+> and date/time. Install them for an automatic upgrade. Other data types are
+> converted into literal.
+
 
 [RDF Datatype] is a module for [Omeka S] that implements the main [RDF datatypes]
 and [XSD datatypes] that are recommended by the World Wide Web consortium [W3C]
@@ -87,7 +94,7 @@ See online issues on the [module issues] page on GitHub.
 License
 -------
 
-This module is published under the [CeCILL v2.1] licence, compatible with
+This module is published under the [CeCILL v2.1] license, compatible with
 [GNU/GPL] and approved by [FSF] and [OSI].
 
 This software is governed by the CeCILL license under French law and abiding by
@@ -122,6 +129,8 @@ Copyright
 
 [RDF Datatype]: https://github.com/Daniel-KM/Omeka-S-module-RdfDatatype
 [Omeka S]: https://omeka.org/s
+[Data Type RDF]: https://gitlab.com/Daniel-KM/Omeka-S-module-DataTypeRdf
+[Numeric Data Types]: https://github.com/omeka-s-modules/NumericDataTypes
 [RDF datatypes]: https://www.w3.org/TR/rdf11-concepts/#section-Datatypes
 [XSD datatypes]: https://www.w3.org/TR/xmlschema11-2
 [W3C]: https://www.w3.org
