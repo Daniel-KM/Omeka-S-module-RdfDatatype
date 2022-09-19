@@ -9,7 +9,7 @@ use Zend\Form\Element;
 use Zend\View\Renderer\PhpRenderer;
 
 /**
- * @url https://www.w3.org/TR/rdf11-concepts/#section-html
+ * @link https://www.w3.org/TR/rdf11-concepts/#section-html
  */
 class RdfHtml extends AbstractRdfDatatype
 {

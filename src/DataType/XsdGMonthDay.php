@@ -7,7 +7,7 @@ use Zend\Form\Element;
 use Zend\View\Renderer\PhpRenderer;
 
 /**
- * @url https://www.w3.org/TR/xmlschema11-2/#gMonthDay
+ * @link https://www.w3.org/TR/xmlschema11-2/#gMonthDay
  */
 class XsdGMonthDay extends AbstractRdfDatatype
 {
@@ -38,7 +38,7 @@ class XsdGMonthDay extends AbstractRdfDatatype
             return false;
         }
         // Check with the offical regex from the w3c.
-        // @url https://www.w3.org/TR/xmlschema11-2/#nt-gMonthDayRep
+        // @link https://www.w3.org/TR/xmlschema11-2/#nt-gMonthDayRep
         $value = preg_replace('/\s+/', '', $valueObject['@value']);
         return strlen($value)
             && preg_match(

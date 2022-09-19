@@ -8,7 +8,7 @@ use Zend\Form\Element;
 use Zend\View\Renderer\PhpRenderer;
 
 /**
- * @url https://www.w3.org/TR/xmlschema11-2/#boolean
+ * @link https://www.w3.org/TR/xmlschema11-2/#boolean
  */
 class XsdBoolean extends AbstractRdfDatatype
 {
@@ -40,7 +40,7 @@ class XsdBoolean extends AbstractRdfDatatype
     {
         return isset($valueObject['@value'])
             // See the lexical space of xsd:boolean.
-            // @url https://www.w3.org/TR/xmlschema11-2/#f-booleanLexmap
+            // @link https://www.w3.org/TR/xmlschema11-2/#f-booleanLexmap
             && in_array(trim($valueObject['@value']), ['0', '1', 'false', 'true'], true);
     }
 
